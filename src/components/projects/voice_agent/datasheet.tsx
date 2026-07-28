@@ -1,11 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import eye from "../../../assets/svg/eye.svg"
-import reactIcon from "../../../assets/svg/technologies/react.svg";
 import pythonIcon from "../../../assets/svg/technologies/python.svg";
-import djangoIcon from "../../../assets/svg/technologies/django.svg";
-import postgresqlIcon from "../../../assets/svg/technologies/postgresql.svg";
-import celeryIcon from "../../../assets/svg/technologies/celery.svg";
 import openAiIcon from "../../../assets/svg/technologies/openai.svg";
 import deepgramIcon from "../../../assets/svg/technologies/deepgram.svg";
 import elevenLabsIcon from "../../../assets/svg/technologies/elevenlabs.svg";
