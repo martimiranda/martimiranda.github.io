@@ -1,10 +1,26 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
+import playIcon from "../../../assets/svg/play.svg";
 
 function Video() {
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const [playing, setPlaying] = useState(false);
+
+    const playVideo = () => {
+        setPlaying(true);
+
+        setTimeout(() => {
+            videoRef.current?.play();
+        }, 150);
+    };
+
     return (
-        <section >
+        <section>
             <div className="mx-auto max-w-7xl px-6 py-24">
+
+                {/* Cabecera */}
                 <div className="mb-10 max-w-2xl">
+
                     <motion.span
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -32,22 +48,88 @@ function Video() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: .5 }}
                     viewport={{ once: true }}
-                    className="overflow-hidden rounded-2xl border border-gray-200 bg-gray-950 shadow-xl"
+                    className="relative overflow-hidden rounded-3xl shadow-2xl"
                 >
+
+                    {/* Overlay */}
+                    <AnimatePresence>
+                        {!playing && (
+                            <motion.button
+                                initial={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: .25 }}
+                                onClick={playVideo}
+                                className="absolute inset-0 z-20 group"
+                            >
+
+                                <img
+                                    src="https://inmobita.es/videos/video-agente-voz-cover.jpg"
+                                    className="
+                                        h-full
+                                        w-full
+                                        object-cover
+                                        transition-transform
+                                        duration-700
+                                        group-hover:scale-105
+                                    "
+                                />
+
+                                <div
+                                    className="
+                                        absolute inset-0
+                                        bg-black/20
+                                        transition-colors
+                                        group-hover:bg-black/30
+                                    "
+                                />
+
+                                <div
+                                    className="
+                                        absolute
+                                        left-1/2
+                                        top-1/2
+                                        flex
+                                        h-24
+                                        w-24
+                                        -translate-x-1/2
+                                        -translate-y-1/2
+                                        items-center
+                                        justify-center
+                                        rounded-full
+                                        bg-white/90
+                                        shadow-xl
+                                        transition-transform
+                                        duration-300
+                                        group-hover:scale-110
+                                    "
+                                >
+                                    <img
+                                        src={playIcon}
+                                        className="h-9 w-9 translate-x-0.5"
+                                    />
+                                </div>
+
+                            </motion.button>
+                        )}
+                    </AnimatePresence>
+
                     <video
-                        className="aspect-video w-full"
-                        controls
+                        ref={videoRef}
+                        controls={playing}
                         preload="metadata"
+                        playsInline
+                        controlsList="nodownload"
                         poster="https://inmobita.es/videos/video-agente-voz-cover.jpg"
+                        className="aspect-video w-full bg-black"
                     >
                         <source
                             src="https://inmobita.es/videos/video-agente-voz.mp4"
                             type="video/mp4"
                         />
-
-                        Tu navegador no soporta la reproducción de vídeo.
                     </video>
+
                 </motion.div>
+
             </div>
         </section>
     );
