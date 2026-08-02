@@ -38,9 +38,10 @@ function Video() {
                         className="aspect-video w-full"
                         controls
                         preload="metadata"
+                        poster="https://inmobita.es/videos/video-agente-voz-cover.jpg"
                     >
                         <source
-                            src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                            src="https://inmobita.es/videos/video-agente-voz.mp4"
                             type="video/mp4"
                         />
 
