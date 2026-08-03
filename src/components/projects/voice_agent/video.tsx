@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import playIcon from "../../../assets/svg/play.svg";
+import portada from "../../../assets/images/voice-agent-cover.jpg";
 
 function Video() {
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -63,7 +64,7 @@ function Video() {
                             >
 
                                 <img
-                                    src="https://inmobita.es/videos/video-agente-voz-cover.jpg"
+                                    src={portada}
                                     className="
                                         h-full
                                         w-full
@@ -119,7 +120,7 @@ function Video() {
                         preload="metadata"
                         playsInline
                         controlsList="nodownload"
-                        poster="https://inmobita.es/videos/video-agente-voz-cover.jpg"
+                        poster={portada}
                         className="aspect-video w-full bg-black"
                     >
                         <source
