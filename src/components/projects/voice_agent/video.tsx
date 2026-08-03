@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import playIcon from "../../../assets/svg/play.svg";
-import portada from "../../../assets/images/voice-agent-cover.jpg";
+import portada from "../../../assets/video-agente-voz-cover.jpg";
 
 function Video() {
     const videoRef = useRef<HTMLVideoElement>(null);
